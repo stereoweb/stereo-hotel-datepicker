@@ -21,7 +21,7 @@ export default class HotelDatepicker {
         this.startOfWeek = opts.startOfWeek || "sunday"; // Or monday
         this.startDate = opts.startDate || new Date();
         this.endDate = opts.endDate || false;
-        this.minNights = opts.minNights || 1;
+        this.minNights = Number.isInteger(opts.minNights) ? opts.minNights : 1;
         this.minNightsMultiple = opts.minNightsMultiple || false;
         this.maxNights = opts.maxNights || 0;
         this.selectForward = opts.selectForward || false;
@@ -301,7 +301,7 @@ export default class HotelDatepicker {
         this.end = false;
 
         // Set the minimum of days required by the daterange
-        this.minDays = this.minNights > 1 ? this.minNights + 1 : 2;
+        this.minDays = this.minNights > 0 ? this.minNights + 1 : 1;
 
         // Set the maximum of days required by the daterange
         this.maxDays = this.maxNights > 0 ? this.maxNights + 1 : 0;
